@@ -80,3 +80,28 @@ div.addEventListener("mouseover", () => {
     });
   });
 };
+
+window.onload = () => {
+  loadFunction();
+
+  const grid = [
+    ["", "", ""], // Row 1
+    ["", "", ""], // Row 2
+    ["", "", ""], // Row 3
+  ];
+
+  const divs = document.querySelectorAll("#board > div");
+
+  let availableOption = "X"; //alternates when user clicks on a square
+
+  divs.forEach((element) => {
+    //click functionality for squares
+    element.addEventListener("click", () => {
+      if (element.textContent === "") {
+        element.classList.remove("X", "O"); // Clear previous class
+
+        element.classList.add(availableOption);
+        element.textContent = availableOption; 
+
+        availableOption = availableOption === "X" ? "O" : "X";
+      }
